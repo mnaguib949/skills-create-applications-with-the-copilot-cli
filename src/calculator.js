@@ -38,6 +38,32 @@ function divide(a, b) {
   return Number(a) / Number(b);
 }
 
+// New operations requested in issue #3
+function modulo(a, b) {
+  // Returns the remainder of a / b. Throws on division by zero.
+  if (Number(b) === 0) {
+    throw new Error('Modulo by zero');
+  }
+  return Number(a) % Number(b);
+}
+
+function power(base, exponent) {
+  // Returns base ** exponent
+  return Math.pow(Number(base), Number(exponent));
+}
+
+function squareRoot(n) {
+  // Returns the square root of n. Throws for negative inputs.
+  const num = Number(n);
+  if (Number.isNaN(num)) {
+    throw new Error('Invalid number');
+  }
+  if (num < 0) {
+    throw new Error('Square root of negative number');
+  }
+  return Math.sqrt(num);
+}
+
 // CLI runner that uses the pure functions above
 function usage() {
   console.error('Usage: node src/calculator.js <operation> <num1> <num2>');
@@ -116,5 +142,8 @@ module.exports = {
   subtract,
   multiply,
   divide,
+  modulo,
+  power,
+  squareRoot,
   runCLI,
 };
